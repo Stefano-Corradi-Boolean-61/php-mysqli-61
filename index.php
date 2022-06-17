@@ -1,5 +1,6 @@
 <?php
 
+
 //var_dump($_SERVER);
 
 require_once __DIR__ . '/db/db-conn.php';
@@ -37,7 +38,6 @@ $result = $conn->query($sql);
 <?php
 // se ho un risultato valido e con almeno una riga
 if($result && $result->num_rows > 0):
-
   // ogni riga del risultato vinen trasfomata in arr associativo e avanza sempre di una riga 
   // fino a quando non finiscono
   while($row = $result->fetch_assoc()){
