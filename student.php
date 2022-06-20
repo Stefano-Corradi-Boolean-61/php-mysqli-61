@@ -8,7 +8,8 @@ require_once __DIR__ . '/partial/header.php';
 
 require_once __DIR__ . '/class/Student.php';
 
-// ATTENZIONE MACANO TUTTI I CONTROLLI (GET, se esiste il risultatao ecc)
+
+// ATTENZIONE MACANO TUTTI I CONTROLLI (GET, se esiste il risultato ecc)
 
 
 $id_student = $_GET['id'];
@@ -57,12 +58,16 @@ if($result && $result->num_rows > 0){
   die;
 }
 
+// exams è un array di array associativi
+$exams = $result_exams->fetch_all();
+
+
 $student = new Student(
                 $student_db->name,
                 $student_db->surname,
                 $student_db->registration_number,
                 $student_db->degree,
-                $result_exams->fetch_all()
+                $exams
 );
 //var_dump($student);
 
@@ -95,7 +100,7 @@ $student = new Student(
 
 <div class="container">
 
-  <a href="http://<?php echo $_SERVER['HTTP_HOST'] ?>/php-mysqli/index.php?offset=<?php echo $offset ?>" class="btn btn-info"><< torna all'elenco </a>
+  <a href="http://<?php echo $_SERVER['HTTP_HOST'] ?>/php-mysqli/students.php?offset=<?php echo $offset ?>" class="btn btn-info"><< torna all'elenco </a>
 </div>
 
 
